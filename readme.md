@@ -3,6 +3,7 @@
 PHP client for [NSQ](https://github.com/bitly/nsq).
 
 ## Supplement
+  - stream函数存在超时设置的陷阱和Bug，一旦没处理好会导致Server端长时间阻塞
   - Add a socket connection class, replace the original stream connection class
   - Replace the publishTo method, use Connection/SocketConnection
 
