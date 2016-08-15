@@ -121,8 +121,7 @@ class SocketConnection implements ConnectionInterface {
      * 
      * @return boolean
      */
-    public function isReadable()
-    {
+    public function isReadable() {
         $read = array($socket = $this->getSocket());
         $readable = @socket_select($read, $null, $null, $this->readWaitTimeoutSec, $this->readWaitTimeoutUsec);
         return $readable ? TRUE : FALSE;
@@ -135,8 +134,7 @@ class SocketConnection implements ConnectionInterface {
      * 
      * @return string Binary data
     */
-    public function read($length)
-    {
+    public function read($length) {
         $read = 0;
         $parts = [];
 
@@ -157,8 +155,7 @@ class SocketConnection implements ConnectionInterface {
      *
      * @return Resource the socket
      */
-    public function reconnect()
-    {
+    public function reconnect() {
         if (is_resource($this->socket)) {
             @socket_shutdown($this->socket);
             @socket_close($this->socket);
@@ -172,8 +169,7 @@ class SocketConnection implements ConnectionInterface {
      *
      * @param string $data The data to write
      */
-    public function write($data)
-    {
+    public function write($data) {
         $written = 0;
         $length = strlen($data);
 
@@ -194,8 +190,7 @@ class SocketConnection implements ConnectionInterface {
      *
      * @throws SocketException
      */
-    private function error($msg)
-    {
+    private function error($msg) {
         $errmsg = @socket_strerror($errno = socket_last_error($this->socket));
         throw new SocketException("{$errmsg} -> {$msg}", $errno);
     }
@@ -205,8 +200,7 @@ class SocketConnection implements ConnectionInterface {
      * 
      * @return Resource The socket
      */
-    public function getSocket()
-    {
+    public function getSocket() {
         if ($this->socket === NULL) {
             $this->socket = @socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
@@ -244,8 +238,7 @@ class SocketConnection implements ConnectionInterface {
      * 
      * @return string
      */
-    public function __toString()
-    {
+    public function __toString() {
         return "{$this->hostname}:{$this->port}";
     }
 }
