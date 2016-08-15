@@ -226,7 +226,7 @@ class nsqphp
             }
             
             $parts = explode(':', $h);
-            $conn = new Connection\Connection(
+            $conn = new Connection\SocketConnection(
                     $parts[0],
                     isset($parts[1]) ? $parts[1] : NULL,
                     $this->connectionTimeout,
