@@ -2,6 +2,10 @@
 
 PHP client for [NSQ](https://github.com/bitly/nsq).
 
+## Supplement
+  - Add a socket connection class, replace the original stream connection class
+  - Replace the publishTo method, use Connection/SocketConnection
+
 ### NSQ basics
 
 You can read all about NSQ via the [readme on Github](https://github.com/bitly/nsq),
@@ -350,10 +354,7 @@ file:
         echo $msg->getId() . "\n";
     }
 ```
-## Supplement
-  - Add a socket connection class, replace the original stream connection class
-  - Replace the publishTo method, use Connection/SocketConnection
- 
+
 ## Design log
 
   - main client based on event loop (powered by React PHP) to allow us to
