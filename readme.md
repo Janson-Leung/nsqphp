@@ -350,7 +350,9 @@ file:
         echo $msg->getId() . "\n";
     }
 ```
-
+## Supplement
+  - Add a socket connection class, replace the original stream connection class
+  - Replace the publishTo method, use Connection/SocketConnection
 ## Design log
 
   - main client based on event loop (powered by React PHP) to allow us to
